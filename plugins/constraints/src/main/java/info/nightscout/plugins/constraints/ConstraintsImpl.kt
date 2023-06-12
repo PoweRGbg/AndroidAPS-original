@@ -17,7 +17,7 @@ class ConstraintsImpl @Inject constructor(private val activePlugin: ActivePlugin
             if (!p.isEnabled()) continue
             constraint.isLoopInvocationAllowed(value)
         }
-        return value
+        return Constraint(true)
     }
 
     override fun isClosedLoopAllowed(value: Constraint<Boolean>): Constraint<Boolean> {
@@ -27,7 +27,7 @@ class ConstraintsImpl @Inject constructor(private val activePlugin: ActivePlugin
             if (!p.isEnabled()) continue
             constraint.isClosedLoopAllowed(value)
         }
-        return value
+        return Constraint(true)
     }
 
     override fun isLgsAllowed(value: Constraint<Boolean>): Constraint<Boolean> {
@@ -37,7 +37,7 @@ class ConstraintsImpl @Inject constructor(private val activePlugin: ActivePlugin
             if (!p.isEnabled()) continue
             constraint.isLgsAllowed(value)
         }
-        return value
+        return Constraint(true)
     }
 
     override fun isAutosensModeEnabled(value: Constraint<Boolean>): Constraint<Boolean> {
@@ -47,7 +47,7 @@ class ConstraintsImpl @Inject constructor(private val activePlugin: ActivePlugin
             if (!p.isEnabled()) continue
             constraint.isAutosensModeEnabled(value)
         }
-        return value
+        return Constraint(true)
     }
 
     override fun isSMBModeEnabled(value: Constraint<Boolean>): Constraint<Boolean> {
@@ -57,7 +57,7 @@ class ConstraintsImpl @Inject constructor(private val activePlugin: ActivePlugin
             if (!p.isEnabled()) continue
             constraint.isSMBModeEnabled(value)
         }
-        return value
+        return Constraint(true)
     }
 
     override fun isUAMEnabled(value: Constraint<Boolean>): Constraint<Boolean> {
@@ -67,7 +67,7 @@ class ConstraintsImpl @Inject constructor(private val activePlugin: ActivePlugin
             if (!p.isEnabled()) continue
             constraint.isUAMEnabled(value)
         }
-        return value
+        return Constraint(true)
     }
 
     override fun isAdvancedFilteringEnabled(value: Constraint<Boolean>): Constraint<Boolean> {
@@ -77,7 +77,7 @@ class ConstraintsImpl @Inject constructor(private val activePlugin: ActivePlugin
             if (!p.isEnabled()) continue
             constraint.isAdvancedFilteringEnabled(value)
         }
-        return value
+        return Constraint(true)
     }
 
     override fun isSuperBolusEnabled(value: Constraint<Boolean>): Constraint<Boolean> {
@@ -87,7 +87,7 @@ class ConstraintsImpl @Inject constructor(private val activePlugin: ActivePlugin
             if (!p.isEnabled()) continue
             constraint.isSuperBolusEnabled(value)
         }
-        return value
+        return Constraint(true)
     }
 
     override fun applyBasalConstraints(absoluteRate: Constraint<Double>, profile: Profile): Constraint<Double> {
@@ -157,6 +157,6 @@ class ConstraintsImpl @Inject constructor(private val activePlugin: ActivePlugin
             if (!p.isEnabled()) continue
             constraint.isAutomationEnabled(value)
         }
-        return value
+        return Constraint(true)
     }
 }
