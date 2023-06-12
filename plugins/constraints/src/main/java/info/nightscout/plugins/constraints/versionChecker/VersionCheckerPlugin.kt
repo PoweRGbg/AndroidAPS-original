@@ -61,7 +61,7 @@ class VersionCheckerPlugin @Inject constructor(
     }
 
     override fun isClosedLoopAllowed(value: Constraint<Boolean>): Constraint<Boolean> {
-        checkWarning()
+        // checkWarning()
         versionCheckerUtils.triggerCheckVersion()
         if (isOldVersion(gracePeriod.veryOld.daysToMillis()))
             value.set(aapsLogger, false, rh.gs(R.string.very_old_version), this)
@@ -78,6 +78,7 @@ class VersionCheckerPlugin @Inject constructor(
             maxIob
 
     private fun checkWarning() {
+        return
         val now = dateUtil.now()
 
         if (!sp.contains(R.string.key_last_versionchecker_plugin_warning)) {
