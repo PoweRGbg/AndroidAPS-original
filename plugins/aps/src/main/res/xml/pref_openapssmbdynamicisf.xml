@@ -35,7 +35,7 @@
             android:inputType="numberDecimal"
             android:key="@string/key_DynISFAdjust"
             android:title="@string/DynISFAdjust_title"
-            validate:floatmaxNumber="300"
+            validate:floatmaxNumber="500"
             validate:floatminNumber="1"
             validate:testType="floatNumericRange" />
 
