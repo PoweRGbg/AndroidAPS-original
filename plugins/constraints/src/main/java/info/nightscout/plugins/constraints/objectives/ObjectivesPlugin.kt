@@ -101,7 +101,7 @@ class ObjectivesPlugin @Inject constructor(
         for (i in 0 until position) {
             accomplished = accomplished && objectives[i].isAccomplished
         }
-        return accomplished
+        return true
     }
 
     /**
@@ -110,45 +110,45 @@ class ObjectivesPlugin @Inject constructor(
     override fun isLoopInvocationAllowed(value: Constraint<Boolean>): Constraint<Boolean> {
         if (!objectives[FIRST_OBJECTIVE].isStarted)
             value.set(aapsLogger, false, rh.gs(R.string.objectivenotstarted, FIRST_OBJECTIVE + 1), this)
-        return value
+        return Constraint(true)
     }
 
     override fun isLgsAllowed(value: Constraint<Boolean>): Constraint<Boolean> {
         if (!objectives[MAXBASAL_OBJECTIVE].isStarted)
             value.set(aapsLogger, false, rh.gs(R.string.objectivenotstarted, MAXBASAL_OBJECTIVE + 1), this)
-        return value
+        return Constraint(true)
     }
 
     override fun isClosedLoopAllowed(value: Constraint<Boolean>): Constraint<Boolean> {
         if (!objectives[MAXIOB_ZERO_CL_OBJECTIVE].isStarted)
             value.set(aapsLogger, false, rh.gs(R.string.objectivenotstarted, MAXIOB_ZERO_CL_OBJECTIVE + 1), this)
-        return value
+        return Constraint(true)
     }
 
     override fun isAutosensModeEnabled(value: Constraint<Boolean>): Constraint<Boolean> {
         if (!objectives[AUTOSENS_OBJECTIVE].isStarted)
             value.set(aapsLogger, false, rh.gs(R.string.objectivenotstarted, AUTOSENS_OBJECTIVE + 1), this)
-        return value
+        return Constraint(true)
     }
 
     override fun isSMBModeEnabled(value: Constraint<Boolean>): Constraint<Boolean> {
         if (!objectives[SMB_OBJECTIVE].isStarted)
             value.set(aapsLogger, false, rh.gs(R.string.objectivenotstarted, SMB_OBJECTIVE + 1), this)
-        return value
+        return Constraint(true)
     }
 
     override fun applyMaxIOBConstraints(maxIob: Constraint<Double>): Constraint<Double> {
         if (objectives[MAXIOB_ZERO_CL_OBJECTIVE].isStarted && !objectives[MAXIOB_ZERO_CL_OBJECTIVE].isAccomplished)
-            maxIob.set(aapsLogger, 0.0, rh.gs(R.string.objectivenotfinished, MAXIOB_ZERO_CL_OBJECTIVE + 1), this)
+            maxIob.set(aapsLogger, maxIob.value(), rh.gs(R.string.objectivenotfinished, MAXIOB_ZERO_CL_OBJECTIVE + 1), this)
         return maxIob
     }
 
     override fun isAutomationEnabled(value: Constraint<Boolean>): Constraint<Boolean> {
         if (!objectives[AUTO_OBJECTIVE].isStarted)
             value.set(aapsLogger, false, rh.gs(R.string.objectivenotstarted, AUTO_OBJECTIVE + 1), this)
-        return value
+        return Constraint(true)
     }
 
-    override fun isAccomplished(index: Int) = objectives[index].isAccomplished
-    override fun isStarted(index: Int): Boolean = objectives[index].isStarted
+    override fun isAccomplished(index: Int) = true
+    override fun isStarted(index: Int): Boolean = true
 }

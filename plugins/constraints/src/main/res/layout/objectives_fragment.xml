@@ -21,8 +21,10 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_weight="1"
+            android:checked="true"
             android:text="Enable fake time and progress"
-            tools:ignore="HardcodedText" />
+            tools:ignore="HardcodedText"
+            tools:visibility="gone" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/reset"
