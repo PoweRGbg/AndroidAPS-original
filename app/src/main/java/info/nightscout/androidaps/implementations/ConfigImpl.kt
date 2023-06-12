@@ -33,19 +33,19 @@ class ConfigImpl @Inject constructor(
         Build.MANUFACTURER + " " + Build.MODEL + " (" + Build.DEVICE + ")"
     override val appName: Int = R.string.app_name
 
-    private var devBranch = false
-    private var engineeringMode = false
-    private var unfinishedMode = false
+    private var devBranch = true
+    private var engineeringMode = true
+    private var unfinishedMode = true
 
     init {
         val engineeringModeSemaphore = File(fileListProvider.ensureExtraDirExists(), "engineering_mode")
         val unfinishedModeSemaphore = File(fileListProvider.ensureExtraDirExists(), "unfinished_mode")
 
-        engineeringMode = engineeringModeSemaphore.exists() && engineeringModeSemaphore.isFile
-        unfinishedMode = unfinishedModeSemaphore.exists() && unfinishedModeSemaphore.isFile
-        devBranch = BuildConfig.VERSION.contains("-") || BuildConfig.VERSION.matches(Regex(".*[a-zA-Z]+.*"))
-        if (BuildConfig.VERSION.contains("-beta") || BuildConfig.VERSION.contains("-rc"))
-            devBranch = false
+        // engineeringMode = engineeringModeSemaphore.exists() && engineeringModeSemaphore.isFile
+        //unfinishedMode = unfinishedModeSemaphore.exists() && unfinishedModeSemaphore.isFile
+        //devBranch = BuildConfig.VERSION.contains("-") || BuildConfig.VERSION.matches(Regex(".*[a-zA-Z]+.*"))
+        //if (BuildConfig.VERSION.contains("-beta") || BuildConfig.VERSION.contains("-rc"))
+            devBranch = true
     }
 
     override fun isEngineeringModeOrRelease(): Boolean =
