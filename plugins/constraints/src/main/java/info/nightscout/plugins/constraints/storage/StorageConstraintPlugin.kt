@@ -43,7 +43,7 @@ class StorageConstraintPlugin @Inject constructor(
             value.set(aapsLogger, false, rh.gs(R.string.disk_full, Constants.MINIMUM_FREE_SPACE), this)
             activeNames.addNotification(Notification.DISK_FULL, rh.gs(R.string.disk_full, Constants.MINIMUM_FREE_SPACE), Notification.NORMAL)
         }
-        return value
+        return Constraint(true)
     }
 
     fun availableInternalMemorySize(): Long {
