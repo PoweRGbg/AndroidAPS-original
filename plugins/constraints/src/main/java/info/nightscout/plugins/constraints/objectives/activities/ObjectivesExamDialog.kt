@@ -82,6 +82,8 @@ class ObjectivesExamDialog : DaggerDialogFragment() {
             task.options.forEach {
                 context?.let { context ->
                     val cb = it.generate(context)
+                    if (it.isCorrect)
+                        cb.isChecked = true
                     if (task.answered) {
                         cb.isEnabled = false
                         if (it.isCorrect)
