@@ -254,7 +254,7 @@
                 android:inputType="numberDecimal"
                 android:key="@string/key_high_mark"
                 android:title="@string/high_mark"
-                validate:floatmaxNumber="250"
+                validate:floatmaxNumber="500"
                 validate:floatminNumber="5"
                 validate:testType="floatNumericRange" />
 
